@@ -2,11 +2,7 @@
 $(call inherit-product, device/lge/ls970/full_ls970.mk)
 
 ## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/cdma.mk)
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 768
+$(call inherit-product, vendor/vanilla/config/cdma.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
