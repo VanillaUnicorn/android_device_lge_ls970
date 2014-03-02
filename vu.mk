@@ -1,17 +1,11 @@
-# Inherit from hardware-specific part of the product configuration
+# Inherit AOSP device configuration for ls970
 $(call inherit-product, device/lge/ls970/full_ls970.mk)
 
-## Specify phone tech before including full_phone
-$(call inherit-product, vendor/vanilla/config/cdma.mk)
+# Inherit Vanilla Unicorn common bits
+$(call inherit-product, vendor/vanilla/configs/common.mk)
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/vanilla/config/common_full_phone.mk)
-
-# Enhanced NFC
-$(call inherit-product, vendor/vanilla/config/nfc_enhanced.mk)
+# Inherit CDMA common stuff
+$(call inherit-product, vendor/vanilla/configs/cdma.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := ls970
@@ -22,8 +16,9 @@ PRODUCT_MANUFACTURER := LGE
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_FINGERPRINT=google/occam/mako:4.2.2/JDQ39/573038:user/release-keys PRIVATE_BUILD_DESC="occam-user 4.2.2 JDQ39 573038 release-keys"
 
-PRODUCT_COPY_FILES += \
-    vendor/vanilla/prebuilt/bootanimation/bootanimation_720_720.zip:system/media/bootanimation-alt.zip
-
 # Enable Torch
 #PRODUCT_PACKAGES += Torch
+
+# Boot animation
+PRODUCT_COPY_FILES += \
+vendor/vanilla/prebuilt/bootanimation/bootanimation_720_720.zip:system/media/bootanimation-alt.zip
