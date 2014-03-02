@@ -1,3 +1,6 @@
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/lge/ls970/full_ls970.mk)
+
 ## Specify phone tech before including full_phone
 $(call inherit-product, vendor/cm/config/cdma.mk)
 
@@ -13,9 +16,6 @@ $(call inherit-product, vendor/vanilla/config/common_full_phone.mk)
 
 # Enhanced NFC
 $(call inherit-product, vendor/vanilla/config/nfc_enhanced.mk)
-
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/lge/ls970/full_ls970.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := ls970
